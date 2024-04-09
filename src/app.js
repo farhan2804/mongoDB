@@ -73,4 +73,43 @@ const getData = async () => {
   }
 };
 
-getData();
+// getData();
+
+//update the document
+
+// const Update = async (_id) => {
+//   try {
+//     const result = await Playlist.updateOne(
+//       { _id },
+//       {
+//         $set: {
+//           name: "Pullu",
+//         },
+//       },
+//       {
+//         new:true,
+//         useFindAndModify: false,
+//       }
+//     );
+//     console.log(result);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+// Update("6615911dc6def92281ae4d73");
+
+
+const Update = async (_id) => {
+  try {
+    const updatedPlaylist = await Playlist.findOneAndUpdate(
+      { _id },
+      { $set: { name: "Java" } },
+      { new: true } // Optional: return the modified document
+    );
+    console.log("Updated Playlist:", updatedPlaylist);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+Update("6615911dc6def92281ae4d73");
